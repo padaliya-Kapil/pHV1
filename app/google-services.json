@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "10517957037",
+    "firebase_url": "https://phv1-5af1e.firebaseio.com",
+    "project_id": "phv1-5af1e",
+    "storage_bucket": "phv1-5af1e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:10517957037:android:f528673283d931b62ff924",
+        "android_client_info": {
+          "package_name": "com.padaliya.phv1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "10517957037-7jdr9t54sv6fqa0pas1s0a01nraeuj00.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.padaliya.phv1",
+            "certificate_hash": "fb8a6ee7f5df31988e2ede744b60d947ba332906"
+          }
+        },
+        {
+          "client_id": "10517957037-t9i5euamcvm5mh2hl2bm4ae761d1odji.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDN-nl-8e5a21jzgqpO7Ogv0HFReyY80bE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "10517957037-t9i5euamcvm5mh2hl2bm4ae761d1odji.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
