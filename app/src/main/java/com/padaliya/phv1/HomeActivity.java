@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -23,13 +24,16 @@ public class HomeActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d("Order","At the home!");
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(navigationSelectedItemListener);
 
-        if(selectedFragment != null){
+        if(selectedFragment == null){
+            Log.d("Order","At the home, Selected fragment is  null");
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new HomeFragment()).commit();
         }
     }
@@ -60,6 +64,7 @@ public class HomeActivity extends AppCompatActivity {
                              selectedFragment = new ProfileFragment();
                              break;
                      }
+
                      if(selectedFragment != null){
                          getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,selectedFragment).commit();
                      }

@@ -26,6 +26,8 @@ protected  void  onStart()
 
     if(firebaseUser!=null)
     {
+
+        Log.d("Order","Goin to  Home!");
         startActivity(new Intent(MainActivity.this , HomeActivity.class));
         finish();
     }
@@ -34,6 +36,7 @@ protected  void  onStart()
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d("Order","At the Main!");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
