@@ -50,18 +50,46 @@
             android:layout_height="wrap_content"
             android:padding="8dp">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                android:text="0"
+                android:layout_marginStart="20dp"
+                android:id="@+id/upvotes"
+                android:layout_marginLeft="8dp" />
+
             <ImageView
+                android:layout_toEndOf="@id/upvotes"
                 android:id="@+id/upvote"
                 android:layout_width="30dp"
+                android:layout_marginStart="8dp"
                 android:layout_height="30dp"
-                android:src="@drawable/ic_upvote" />
+                android:src="@drawable/ic_upvote"
+                android:layout_toRightOf="@id/upvotes"
+                android:layout_marginLeft="8dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold"
+                android:text="0"
+                android:layout_toEndOf="@id/upvote"
+                android:layout_marginStart="20dp"
+                android:id="@+id/downvotes"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@id/upvote" />
 
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:id="@+id/downvote"
-                android:layout_toEndOf="@id/upvote"
-                android:layout_marginStart="20dp"
+                android:layout_toEndOf="@id/downvotes"
+                android:layout_marginStart="8dp"
                 android:src="@drawable/ic_downvote"
                 android:layout_toRightOf="@id/upvote"
                 android:layout_marginLeft="20dp" />
@@ -79,14 +107,7 @@
 
         </RelativeLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:textColor="@color/colorPrimaryDark"
-            android:textStyle="bold"
-            android:id="@+id/upvotes"
-            android:layout_marginLeft="8dp" />
+
 
         <TextView
             android:layout_width="wrap_content"

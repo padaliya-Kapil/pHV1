@@ -47,7 +47,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ImageViewHolde
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PostAdapter.ImageViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final PostAdapter.ImageViewHolder holder, int position) {
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         final Post post = mPosts.get(position);
 
@@ -63,6 +63,53 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ImageViewHolde
         }
 
         publisherInfo(holder.image_profile, holder.username, holder.publisher, post.getPublisher());
+
+        isUpvoted(post.getPostid(), holder.upvote);
+        isdownVoted(post.getPostid(), holder.downvote);
+
+        nUpvotes(holder.upvotes, post.getPostid());
+        nDownotes(holder.downvotes, post.getPostid());
+
+
+        holder.upvote.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (holder.upvote.getTag().equals("upvote")) {
+                    FirebaseDatabase.getInstance().getReference().child("Upvotes").child(post.getPostid())
+                            .child(firebaseUser.getUid()).setValue(true);
+
+                    if (holder.downvote.getTag().equals("downvoted")){
+                        FirebaseDatabase.getInstance().getReference().child("Downvotes").child(post.getPostid())
+                                .child(firebaseUser.getUid()).removeValue();
+                    }
+
+                    // implement downvote logics here too
+                } else {
+                    FirebaseDatabase.getInstance().getReference().child("Upvotes").child(post.getPostid())
+                            .child(firebaseUser.getUid()).removeValue();
+                }
+            }
+        });
+
+        holder.downvote.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (holder.downvote.getTag().equals("downvote")) {
+                    FirebaseDatabase.getInstance().getReference().child("Downvotes").child(post.getPostid())
+                            .child(firebaseUser.getUid()).setValue(true);
+
+                    if (holder.upvote.getTag().equals("upvoted")){
+                        FirebaseDatabase.getInstance().getReference().child("Upvotes").child(post.getPostid())
+                                .child(firebaseUser.getUid()).removeValue();
+                    }
+
+                    // implement upvote logics here too
+                } else {
+                    FirebaseDatabase.getInstance().getReference().child("Downvotes").child(post.getPostid())
+                            .child(firebaseUser.getUid()).removeValue();
+                }
+            }
+        });
     }
 
 
@@ -78,7 +125,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ImageViewHolde
     public class ImageViewHolder extends RecyclerView.ViewHolder {
 
         public ImageView image_profile, post_image, upvote,downvote, comment;
-        public TextView username, upvotes, publisher, description, comments;
+        public TextView username, upvotes,downvotes, publisher, description, comments;
 
         public ImageViewHolder(View itemView) {
             super(itemView);
@@ -90,6 +137,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ImageViewHolde
             downvote = itemView.findViewById(R.id.downvote);
             comment = itemView.findViewById(R.id.comment);
             upvotes = itemView.findViewById(R.id.upvotes);
+            downvotes = itemView.findViewById(R.id.downvotes);
             publisher = itemView.findViewById(R.id.publisher);
             description = itemView.findViewById(R.id.description);
             comments = itemView.findViewById(R.id.comments);
@@ -116,10 +164,104 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ImageViewHolde
 
             }
 
+
+
+
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
             }
         });
+    }
+
+
+    private void isUpvoted(String postid, final ImageView imageView){
+
+        final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference()
+                .child("Upvotes")
+                .child(postid);
+
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                if(dataSnapshot.child(firebaseUser.getUid()).exists()){
+                    imageView.setImageResource(R.drawable.ic_upvoted);
+                    imageView.setTag("upvoted");
+                }else  {
+                    imageView.setImageResource(R.drawable.ic_upvote);
+                    imageView.setTag("upvote");
+                }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void isdownVoted(String postid, final ImageView imageView){
+
+        final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference()
+                .child("Downvotes")
+                .child(postid);
+
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                if(dataSnapshot.child(firebaseUser.getUid()).exists()){
+                    imageView.setImageResource(R.drawable.ic_downvoted);
+                    imageView.setTag("downvoted");
+                }else  {
+                    imageView.setImageResource(R.drawable.ic_downvote);
+                    imageView.setTag("downvote");
+                }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void nUpvotes(final TextView upvoteCounter, String postId){
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Upvotes").child(postId);
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                upvoteCounter.setText(dataSnapshot.getChildrenCount()+"");
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+
+    private void nDownotes(final TextView downVoteCounter, String postId){
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Downvotes").child(postId);
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                downVoteCounter.setText(dataSnapshot.getChildrenCount()+"");
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
     }
 }
