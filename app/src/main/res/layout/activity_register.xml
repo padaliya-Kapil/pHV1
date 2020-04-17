@@ -56,7 +56,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/register"
         android:textColor="@color/colorPrimary"
-        android:text="Register"
+        android:text="Sign Up"
         android:background="@drawable/button_background"
         android:layout_marginTop="15dp"
         android:padding="10dp"/>
