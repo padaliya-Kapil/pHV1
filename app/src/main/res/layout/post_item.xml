@@ -2,6 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/button_background"
+    android:layout_margin="10dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
@@ -11,7 +13,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -23,6 +25,7 @@
                 android:layout_margin="10dp"/>
 
             <TextView
+                android:layout_toRightOf="@id/image_profile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/username"
@@ -31,7 +34,18 @@
                 android:textStyle="bold"
                 android:textColor="@color/colorPrimaryDark"/>
 
-        </LinearLayout>
+            <ImageView
+                android:src="@drawable/ic_pin"
+                android:layout_marginRight="8dp"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="center_vertical"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true">
+
+            </ImageView>
+
+        </RelativeLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -94,16 +108,6 @@
                 android:layout_toRightOf="@id/upvote"
                 android:layout_marginLeft="20dp" />
 
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:id="@+id/comment"
-                android:src="@drawable/ic_comment"
-                android:layout_toEndOf="@id/downvote"
-                android:layout_marginStart="20dp"
-                android:layout_toRightOf="@id/downvote"
-                android:layout_marginLeft="20dp" />
-
 
         </RelativeLayout>
 
@@ -126,16 +130,6 @@
             android:id="@+id/description"
             android:layout_marginLeft="8dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="View All 20 Comments"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="5dp"
-            android:textColor="@color/colorAccent"
-            android:id="@+id/comments"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="8dp" />
 
     </LinearLayout>
 

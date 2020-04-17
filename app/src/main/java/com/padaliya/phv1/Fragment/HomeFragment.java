@@ -47,11 +47,7 @@ public class HomeFragment extends Fragment {
         recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
-//        LinearLayoutManager mLayoutManager = new LinearLayoutManager(getContext());
-//        mLayoutManager.setReverseLayout(true);
-//        mLayoutManager.setStackFromEnd(true);
-//        recyclerView.setLayoutManager(mLayoutManager);
+        
         progressBar = view.findViewById(R.id.progress_circular);
 
         postList = new ArrayList<>();
