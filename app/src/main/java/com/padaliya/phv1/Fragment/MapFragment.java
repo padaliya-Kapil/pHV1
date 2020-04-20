@@ -7,11 +7,15 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.maps.model.TileOverlay;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.maps.android.heatmaps.HeatmapTileProvider;
 
 
-
-
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +34,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import com.google.android.gms.maps.model.TileOverlayOptions;
 
+import com.padaliya.phv1.Model.Post;
 import com.padaliya.phv1.R;
 
 import org.json.JSONException;
@@ -46,15 +51,21 @@ public class MapFragment extends Fragment  {
     private GoogleMap googleMap;
     HeatmapTileProvider mProvider ;
 
+    private List<Post> postList;
+
     private TileOverlay mOverlay;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        readPosts();
         View view = inflater.inflate(R.layout.fragment_map, container, false);
 
         mMapView = view.findViewById(R.id.map);
         mMapView.onCreate(savedInstanceState);
+
+        postList = new ArrayList<>();
+
 
         mMapView.onResume(); // needed to get the map to display immediately
 
@@ -117,42 +128,15 @@ public class MapFragment extends Fragment  {
 
     private void addHeatMap() {
         List<LatLng> list = new ArrayList<>();
-        list.add(new LatLng(43.651070, -79.347015));
-        list.add(new LatLng(43.651070, -79.347015));
-        list.add(new LatLng(43.651070, -79.347015));
-        list.add(new LatLng(43.651070, -79.347015));
-        list.add(new LatLng(43.651070, -79.347015));
-        list.add(new LatLng(43.651070, -79.347015));
-        list.add(new LatLng(43.651070, -79.347015));
-        list.add(new LatLng(43.651070, -79.347015));
-        list.add(new LatLng(43.651070, -79.347015));
-        list.add(new LatLng(43.651070, -79.347015));
-        list.add(new LatLng(43.651070, -79.347015));
-        list.add(new LatLng(43.651070, -79.347015));
-        list.add(new LatLng(43.651070, -79.347015));
-        list.add(new LatLng(43.50, -79.347015));
-        list.add(new LatLng(42.2070, -78.347015));
-        list.add(new LatLng(40.11070, -73.347015));
-        list.add(new LatLng(38.651070, -75.347015));
-        list.add(new LatLng(35.50, -74.347015));
-        list.add(new LatLng(47.2070, -72.347015));
-        list.add(new LatLng(43.11070, -71.347015));
-        list.add(new LatLng(43.651070, -74.347015));
-        list.add(new LatLng(43.50, -75.7015));
-        list.add(new LatLng(42.2070, -76.015));
-        list.add(new LatLng(40.11070, -71.337015));
-        list.add(new LatLng(38.651070, -74.347015));
-        list.add(new LatLng(35.50, -76.347015));
-        list.add(new LatLng(47.2070, -78.7015));
-        list.add(new LatLng(43.11070, -77.347015));
-        list.add(new LatLng(43.651070, -74.347015));
-        list.add(new LatLng(43.50, -77.5));
-        list.add(new LatLng(42.2070, -72.015));
-        list.add(new LatLng(40.11070, -71.7015));
-        list.add(new LatLng(38.651070, -74.0125));
-        list.add(new LatLng(35.50, -75.66015));
-        list.add(new LatLng(47.2070, -78.015));
-        list.add(new LatLng(43.11070, -72.347015));
+
+        for(Post post : postList ){
+            String [] latLong = post.getLocation().split(",");
+            if(latLong.length > 0){
+                Log.d("MapF",latLong.toString());
+                list.add(new LatLng(Double.parseDouble(latLong[0]),Double.parseDouble(latLong[1])));
+            }
+
+        }
 
         mProvider = new HeatmapTileProvider.Builder()
                 .radius(50)
@@ -162,6 +146,24 @@ public class MapFragment extends Fragment  {
         // Add a tile overlay to the map, using the heat map tile provider.
         mOverlay = googleMap.addTileOverlay(new TileOverlayOptions().tileProvider(mProvider));
 
+    }
+    private void readPosts(){
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Posts");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                postList.clear();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    Post post = snapshot.getValue(Post.class);
+                    postList.add(post);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
 
