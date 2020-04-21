@@ -7,67 +7,84 @@
     android:orientation="vertical"
     android:gravity="center"
     android:padding="10dp"
+    android:background="@drawable/background"
     tools:context=".RegisterActivity">
-    
+
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:src="@mipmap/ic_launcher"/>
+        android:layout_width="139dp"
+        android:layout_height="139dp"
+        android:src="@drawable/logo" />
 
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/editext_background"
-        android:hint="Username"
-        android:layout_marginTop="15dp"
         android:id="@+id/username"
-        android:padding="10dp"/>
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/editext_background"
-        android:hint="Fullname"
+        android:layout_width="325dp"
+        android:layout_height="45dp"
+        android:drawableLeft="@drawable/ic_action_username"
         android:layout_marginTop="15dp"
-        android:id="@+id/fullname"
-        android:padding="10dp"/>
+        android:textColorHint="#FFFFFF"
+        android:background="@drawable/background"
+        android:hint="Username"
+        android:padding="10dp"
+        android:textColor="#FFFFFF" />
 
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/editext_background"
+        android:id="@+id/fullname"
+        android:layout_width="325dp"
+        android:layout_height="45dp"
+        android:textColorHint="#FFFFFF"
+        android:drawableLeft="@drawable/ic_action_fullname"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/background"
+        android:hint="Fullname"
+        android:padding="10dp"
+        android:textColor="#FFFFFF" />
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="325dp"
+        android:layout_height="45dp"
+        android:textColorHint="#FFFFFF"
+        android:drawableLeft="@drawable/ic_action_name"
+
+        android:layout_marginTop="15dp"
+        android:background="@drawable/background"
         android:hint="Email"
         android:inputType="textEmailAddress"
-        android:layout_marginTop="15dp"
-        android:id="@+id/email"
-        android:padding="10dp"/>
+        android:padding="10dp"
+        android:textColor="#FFFFFF" />
+
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/editext_background"
+        android:id="@+id/password"
+        android:layout_width="325dp"
+        android:layout_height="45dp"
+        android:textColorHint="#FFFFFF"
+        android:drawableLeft="@drawable/ic_action_pass"
+
+        android:layout_marginTop="15dp"
+        android:background="@drawable/background"
         android:hint="Password"
         android:inputType="textPassword"
-        android:layout_marginTop="15dp"
-        android:id="@+id/password"
-        android:padding="10dp"/>
+        android:padding="10dp"
+        android:textColor="#FFFFFF" />
 
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/register"
-        android:textColor="@color/colorPrimary"
-        android:text="Sign Up"
-        android:background="@drawable/button_background"
+        android:layout_width="283dp"
+        android:layout_height="52dp"
         android:layout_marginTop="15dp"
-        android:padding="10dp"/>
+        android:background="@drawable/rounded_btn"
+        android:padding="10dp"
+
+        android:text="Sign Up"
+        android:textColor="@color/colorPrimary" />
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Already have an account ? Log in"
         android:id="@+id/text_login"
+        android:layout_width="wrap_content"
+        android:layout_height="18dp"
         android:layout_marginTop="10dp"
-        />
+        android:text="Already have an account ? Log in"
+        android:textColor="#FFFFFF" />
 
 
 </LinearLayout>

@@ -35,14 +35,14 @@
                 android:textColor="@color/colorPrimaryDark"/>
 
             <ImageView
-                android:src="@drawable/ic_pin"
-                android:layout_marginRight="8dp"
-                android:layout_alignParentEnd="true"
                 android:id="@+id/locationpin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
                 android:layout_gravity="center_vertical"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignParentRight="true">
+                android:layout_marginRight="8dp"
+                android:src="@drawable/ic_pin">
 
             </ImageView>
 
