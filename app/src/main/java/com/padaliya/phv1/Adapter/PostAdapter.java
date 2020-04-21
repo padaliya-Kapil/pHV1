@@ -172,7 +172,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ImageViewHolde
 
                 Log.d("Post",user.toString());
 
-                Glide.with(mContext).load(user.getImgurl()).into(image_profile);
+                Glide.with(mContext).load(user.getimageurl()).into(image_profile);
                 username.setText(user.getUsername());
                 publisher.setText(user.getUsername());
 
