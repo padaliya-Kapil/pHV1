@@ -38,6 +38,7 @@
                 android:src="@drawable/ic_pin"
                 android:layout_marginRight="8dp"
                 android:layout_alignParentEnd="true"
+                android:id="@+id/locationpin"
                 android:layout_gravity="center_vertical"
                 android:layout_width="30dp"
                 android:layout_height="30dp"

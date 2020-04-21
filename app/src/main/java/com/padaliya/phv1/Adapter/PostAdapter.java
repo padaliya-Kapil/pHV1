@@ -1,6 +1,7 @@
 package com.padaliya.phv1.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.google.android.gms.maps.MapView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -20,8 +22,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.padaliya.phv1.HazardmapActivity;
 import com.padaliya.phv1.Model.Post;
 import com.padaliya.phv1.Model.User;
+import com.padaliya.phv1.PostActivity;
 import com.padaliya.phv1.R;
 
 import java.util.List;
@@ -71,6 +75,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ImageViewHolde
         nDownotes(holder.downvotes, post.getPostid());
 
 
+
         holder.upvote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -110,6 +115,16 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ImageViewHolde
                 }
             }
         });
+
+        holder.location_pin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent toBeSent = new Intent(mContext, HazardmapActivity.class);
+                toBeSent.putExtra("post",post);
+                mContext.startActivity(toBeSent);
+
+            }
+        });
     }
 
 
@@ -124,8 +139,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ImageViewHolde
 
     public class ImageViewHolder extends RecyclerView.ViewHolder {
 
-        public ImageView image_profile, post_image, upvote,downvote, comment;
-        public TextView username, upvotes,downvotes, publisher, description, comments;
+        public ImageView image_profile, post_image, upvote,downvote,location_pin;
+        public TextView username, upvotes,downvotes, publisher, description;
 
         public ImageViewHolder(View itemView) {
             super(itemView);
@@ -139,6 +154,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ImageViewHolde
             downvotes = itemView.findViewById(R.id.downvotes);
             publisher = itemView.findViewById(R.id.publisher);
             description = itemView.findViewById(R.id.description);
+            location_pin = itemView.findViewById(R.id.locationpin);
 
 
         }

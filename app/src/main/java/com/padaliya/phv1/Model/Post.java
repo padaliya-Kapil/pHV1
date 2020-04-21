@@ -1,6 +1,8 @@
 package com.padaliya.phv1.Model;
 
-public class Post {
+import java.io.Serializable;
+
+public class Post implements Serializable {
     private String location ;
     private String postid;
     private String postImage;
