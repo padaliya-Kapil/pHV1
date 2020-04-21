@@ -28,7 +28,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.padaliya.phv1.Adapter.MyPostsAdapter;
-import com.padaliya.phv1.EditProfile;
+import com.padaliya.phv1.EditProfileActivity;
 import com.padaliya.phv1.Model.Post;
 import com.padaliya.phv1.Model.User;
 import com.padaliya.phv1.R;
@@ -104,7 +104,7 @@ public class ProfileFragment extends Fragment  {
                 Log.d("Profile",btn);
 
                 if (btn.equals("Edit Profile")) {
-                      startActivity(new Intent(getContext(), EditProfile.class));
+                      startActivity(new Intent(getContext(), EditProfileActivity.class));
 
                 } else if (btn.equals("Follow")) {
 

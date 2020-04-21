@@ -14,7 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".EditProfile"></activity>
+        <activity android:name=".EditProfileActivity"></activity>
         <activity android:name=".HazardmapActivity" />
 
         <meta-data
