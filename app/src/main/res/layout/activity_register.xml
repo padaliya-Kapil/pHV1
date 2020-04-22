@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:gravity="center"
     android:padding="10dp"
-    android:background="@drawable/background"
+    android:background="#FFF"
     tools:context=".RegisterActivity">
 
     <ImageView
@@ -21,51 +21,45 @@
         android:layout_height="45dp"
         android:drawableLeft="@drawable/ic_action_username"
         android:layout_marginTop="15dp"
-        android:textColorHint="#FFFFFF"
-        android:background="@drawable/background"
+        android:textColorHint="@color/colorHintOnWhite"
         android:hint="Username"
         android:padding="10dp"
-        android:textColor="#FFFFFF" />
+        android:textColor="@color/colorTextOnWhite" />
 
     <EditText
         android:id="@+id/fullname"
         android:layout_width="325dp"
         android:layout_height="45dp"
-        android:textColorHint="#FFFFFF"
+        android:textColorHint="@color/colorHintOnWhite"
         android:drawableLeft="@drawable/ic_action_fullname"
         android:layout_marginTop="15dp"
-        android:background="@drawable/background"
         android:hint="Fullname"
         android:padding="10dp"
-        android:textColor="#FFFFFF" />
+        android:textColor="@color/colorTextOnWhite" />
 
     <EditText
         android:id="@+id/email"
         android:layout_width="325dp"
         android:layout_height="45dp"
-        android:textColorHint="#FFFFFF"
-        android:drawableLeft="@drawable/ic_action_name"
-
+        android:textColorHint="@color/colorHintOnWhite"
+        android:drawableLeft="@drawable/ic_email"
         android:layout_marginTop="15dp"
-        android:background="@drawable/background"
         android:hint="Email"
         android:inputType="textEmailAddress"
         android:padding="10dp"
-        android:textColor="#FFFFFF" />
+        android:textColor="#000" />
 
     <EditText
         android:id="@+id/password"
         android:layout_width="325dp"
         android:layout_height="45dp"
-        android:textColorHint="#FFFFFF"
+        android:textColorHint="@color/colorHintOnWhite"
         android:drawableLeft="@drawable/ic_action_pass"
-
         android:layout_marginTop="15dp"
-        android:background="@drawable/background"
         android:hint="Password"
         android:inputType="textPassword"
         android:padding="10dp"
-        android:textColor="#FFFFFF" />
+        android:textColor="@color/colorTextOnWhite"  />
 
     <Button
         android:id="@+id/register"
@@ -76,7 +70,7 @@
         android:padding="10dp"
 
         android:text="Sign Up"
-        android:textColor="@color/colorPrimary" />
+        android:textColor="@color/colorButtontext" />
 
     <TextView
         android:id="@+id/text_login"
@@ -84,7 +78,7 @@
         android:layout_height="18dp"
         android:layout_marginTop="10dp"
         android:text="Already have an account ? Log in"
-        android:textColor="#FFFFFF" />
+        android:textColor="@color/colorTextOnWhite" />
 
 
 </LinearLayout>

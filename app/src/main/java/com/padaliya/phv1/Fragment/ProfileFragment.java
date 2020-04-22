@@ -74,7 +74,6 @@ public class ProfileFragment extends Fragment  {
         bio = view.findViewById(R.id.bio);
         edit_profile = view.findViewById(R.id.edit_profile);
         username = view.findViewById(R.id.username);
-        options = view.findViewById(R.id.options);
 
         recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);

@@ -38,7 +38,7 @@
             android:id="@+id/fullname"
             android:text="fullname"
             android:maxLines="1"
-            android:textColor="@color/colorPrimaryDark">
+            android:textColor="@color/colorPrimary">
 
         </TextView>
 
@@ -46,9 +46,9 @@
     <Button
         android:id="@+id/follow_button"
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:background="@drawable/button_background"
-        android:textColor="@color/colorPrimary"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_btn"
+        android:textColor="@color/colorButtontext"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_marginEnd="5dp"

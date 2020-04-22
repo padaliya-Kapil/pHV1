@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -87,7 +89,6 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>{
                 if(holder.btn_follow.getText().toString().equals("Follow")){
                     FirebaseDatabase.getInstance().getReference().child("Follow").child(mFirebaseUser.getUid()).child("Following").child(user.getId()).setValue(true);
                     FirebaseDatabase.getInstance().getReference().child("Follow").child(user.getId()).child("Followers").child(mFirebaseUser.getUid()).setValue(true);
-
                 }else
                 {
                     FirebaseDatabase.getInstance().getReference().child("Follow").child(mFirebaseUser.getUid()).child("Following").child(user.getId()).removeValue();

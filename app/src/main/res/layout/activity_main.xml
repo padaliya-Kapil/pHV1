@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="#FFF"
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".MainActivity">
@@ -22,7 +22,7 @@
         android:layout_marginTop="15dp"
         android:background="@drawable/rounded_btn"
         android:text="Login"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/colorButtontext"
         android:textSize="18sp" />
 
     <Button
@@ -32,7 +32,7 @@
         android:layout_marginTop="15dp"
         android:background="@drawable/rounded_btn"
         android:text="Register"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/colorButtontext"
         android:textSize="18sp" />
 
 

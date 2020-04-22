@@ -249,6 +249,7 @@ public class PostActivity extends AppCompatActivity {
                             if (location != null) {
                                 Log.d("Postact","fetch location 254" + userLocation);
                                 userLocation = location.getLatitude() + "," + location.getLongitude();
+                                Log.d("map",userLocation);
 
                                // user_location.setText("Latitude = "+latittude + "\nLongitude = " + longitude);
 

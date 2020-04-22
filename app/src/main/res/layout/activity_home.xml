@@ -11,8 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/bottom"
-        android:background="#344955">
-
+        android:background="#FFF">
     </FrameLayout>
 
     <com.google.android.material.appbar.AppBarLayout
@@ -25,8 +24,8 @@
             android:id="@+id/bottom_navigation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#232F34"
-            app:itemIconTint="@color/colorAccent"
+            android:background="@color/colorPrimaryDark"
+            app:itemIconTint="@color/colorButtontext"
             app:labelVisibilityMode="unlabeled"
             app:menu="@menu/bottom_navigation" />
 

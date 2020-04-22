@@ -29,16 +29,6 @@
                     android:textStyle="bold"
                     android:id="@+id/username"/>
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/options"
-                    android:src="@drawable/ic_options"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="10dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="10dp" />
-
             </RelativeLayout>
 
         </androidx.appcompat.widget.Toolbar>
@@ -150,8 +140,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
+                        android:textColor="@color/colorButtontext"
                         android:id="@+id/edit_profile"
-                        android:background="@drawable/button_black"/>
+                        android:background="@drawable/rounded_btn"/>
 
                 </LinearLayout>
 
