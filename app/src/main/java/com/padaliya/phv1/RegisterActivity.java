@@ -23,6 +23,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class RegisterActivity extends AppCompatActivity {
     EditText username, fullname , email , password ;
@@ -33,6 +35,10 @@ public class RegisterActivity extends AppCompatActivity {
     DatabaseReference refernces ;
 
     ProgressDialog pd ;
+
+    public static final Pattern VALID_EMAIL_ADDRESS_REGEX =
+            Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,9 +66,7 @@ public class RegisterActivity extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pd = new ProgressDialog(RegisterActivity.this) ;
-                pd.setMessage("Please wait...");
-                pd.show();
+
 
 
                 String str_username = username.getText().toString() ;
@@ -76,11 +80,21 @@ public class RegisterActivity extends AppCompatActivity {
                         TextUtils.isEmpty(str_email))
                 {
                     Toast.makeText(RegisterActivity.this, "All fields are compulsory",Toast.LENGTH_SHORT).show();
-                }else if(str_password.length() < 8){
-                    Toast.makeText(RegisterActivity.this, "All fields are compulsory",Toast.LENGTH_SHORT).show();
-                } else if(str_username.length() < 2){
-                    Toast.makeText(RegisterActivity.this, "Must have more than 2 characters",Toast.LENGTH_SHORT).show();
-                }else register(str_username,str_fullname,str_email,str_password);
+                }else if(str_password.length() < 6){
+                    Toast.makeText(RegisterActivity.this, "Password must contain 6 characters",Toast.LENGTH_SHORT).show();
+                } else if(str_username.length() < 3 || str_fullname.length() < 3 ){
+                    Toast.makeText(RegisterActivity.this, "Username & Full name have more than 2 characters",Toast.LENGTH_SHORT).show();
+                }else if(!validate(str_email)){
+                    Toast.makeText(RegisterActivity.this, "Email should be in format abc@xyz.pqr",Toast.LENGTH_SHORT).show();
+
+
+                }else {
+                    pd = new ProgressDialog(RegisterActivity.this) ;
+                    pd.setMessage("Please wait...");
+                    pd.show();
+                    register(str_username,str_fullname,str_email,str_password);
+                }
+
             }
 
 
@@ -130,5 +144,10 @@ public class RegisterActivity extends AppCompatActivity {
                             }
                         }
                 );
+    }
+
+    public static boolean validate(String emailStr) {
+        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(emailStr);
+        return matcher.find();
     }
 }

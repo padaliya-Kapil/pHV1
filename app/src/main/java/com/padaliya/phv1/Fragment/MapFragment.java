@@ -75,7 +75,7 @@ public class MapFragment extends Fragment  {
              //  googleMap.setMyLocationEnabled(true);
 
                  //For dropping a marker at a point on the Map
-               LatLng sydney = new LatLng(43.651070, -79.347015);
+               LatLng sydney = new LatLng(43.79596586012583, -79.22372333851163);
               // googleMap.addMarker(new MarkerOptions().position(sydney).title("Marker Title").snippet("Marker Description"));
 
                 addHeatMap();

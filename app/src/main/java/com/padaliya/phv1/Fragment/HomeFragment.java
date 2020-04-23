@@ -1,6 +1,7 @@
 package com.padaliya.phv1.Fragment;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -26,6 +27,8 @@ import com.padaliya.phv1.R;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.content.Context.MODE_PRIVATE;
 
 
 public class HomeFragment extends Fragment {
@@ -66,7 +69,6 @@ public class HomeFragment extends Fragment {
 
     private void readPosts(){
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Posts");
-
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -74,13 +76,14 @@ public class HomeFragment extends Fragment {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
                     Post post = snapshot.getValue(Post.class);
                     for (String id : followingList){
-                        if (post.getPublisher().equals(id)){
+                        if (post.getPublisher().equals(id) ){
                             postList.add(post);
                             Log.d("HF",post.toString());
                             Log.d("HF83",postList.size()+"");
                         }
                     }
                 }
+
                 Log.d("HF85",postList.size()+"");
                 postAdapter.notifyDataSetChanged();
                 progressBar.setVisibility(View.GONE);
@@ -94,6 +97,8 @@ public class HomeFragment extends Fragment {
     }
 
     private void checkFollowing(){
+
+
         followingList = new ArrayList<>();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Follow")
                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid())

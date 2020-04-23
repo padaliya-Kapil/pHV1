@@ -43,10 +43,13 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ImageViewHolde
 
     private FirebaseUser firebaseUser;
 
+
     public PostAdapter(Context context, List<Post> posts){
         mContext = context;
         mPosts = posts;
     }
+
+
 
     @NonNull
     @Override

@@ -201,6 +201,7 @@ public class ProfileFragment extends Fragment  {
     }
 
     private void getNrPosts(){
+
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Posts");
         reference.addValueEventListener(new ValueEventListener() {
             @Override

@@ -147,7 +147,7 @@ public class PostActivity extends AppCompatActivity {
                         hashMap.put("postImage",myUrl);
                         hashMap.put("description",description.getText().toString());
                         hashMap.put("publisher", FirebaseAuth.getInstance().getCurrentUser().getUid());
-                        hashMap.put("location","43.651070,-79.347015");
+                        hashMap.put("location","43.79596586012583, -79.22372333851163 n");
 
                         //Its not taking location  I dont know why
 
