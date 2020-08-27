@@ -7,6 +7,8 @@ The authencity of these hazards can be verified by various upvotes and downvotes
 The users can also see heat maps with realtime data and then avoid areas with high hazards nearby .
 Application also notifies users using of a hazard by custom notification as soon as they enter the geo-perimeter of the hazard .
 
+Following are the screenshots of important pages of the application :
+
 
 User profile screen
 
